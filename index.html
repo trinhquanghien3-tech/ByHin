@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>WEB BY HIỂN</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 32px;
+      background: rgb(5, 4, 4);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: rgb(7, 6, 6);
+    }
+  </style>
+</head>
+<body>
+  <h1>Trang web vui vẻ 🤭</h1>
+  <p>Bấm vào mối tình còn đang dở sẽ tiếp tục...</p>
+  <button onclick="fakeLag()">Bấm vào đây</button>
+
+  <script>
+    function fakeLag() {
+      alert("😈 Có cái l****!");
+      // Giả lập đơ bằng vòng lặp nặng trong 2 giây
+      let start = Date.now();
+      while (Date.now() - start < 2000) {
+        // vòng lặp này khiến máy bận, nhìn như bị đơ
+      }
+      alert("😅 Vui vẻ không quạo!");
+      alert("Đừng nhớ Yến NHi")
+      alert("Ngủ đi cu 5h dậy")
+    }
+  </script>
+</body>
+</html>
