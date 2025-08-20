@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Cười i**</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    background-color: black;
+    font-family: monospace;
+    transition: transform 0.05s;
+  }
+  .message {
+    position: absolute;
+    font-weight: bold;
+    user-select: none;
+    pointer-events: none;
+    color: red;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  #startLink {
+    color: rgb(255, 0, 0);
+    font-size: 24px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+  }
+</style>
+</head>
+<body>
+<a href="#" id="startLink">Card Garena 100k Free!</a>
+
+<script>
+const link = document.getElementById('startLink');
+
+// Hàm tạo âm "eeeeeeee"
+function scream(duration = 0.3) {
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const oscillator = audioCtx.createOscillator();
+  oscillator.type = 'sine'; // sine nghe giống eeee
+  oscillator.frequency.setValueAtTime(500, audioCtx.currentTime); // tần số 500Hz
+  oscillator.connect(audioCtx.destination);
+  oscillator.start();
+  oscillator.stop(audioCtx.currentTime + duration);
+}
+
+link.addEventListener('click', function(e){
+  e.preventDefault();
+
+  // Ẩn nút khi bấm
+  link.style.display = 'none';
+
+  const interval = setInterval(() => {
+    const msg = document.createElement('div');
+    msg.className = 'message';
+    msg.textContent = 'Máy bạn đã dính virus!';
+
+    // Vị trí chồng lên nhau
+    msg.style.top = Math.random() * window.innerHeight + 'px';
+    msg.style.left = Math.random() * window.innerWidth + 'px';
+
+    // Kích thước ngẫu nhiên
+    msg.style.fontSize = (16 + Math.random() * 40) + 'px';
+
+    document.body.appendChild(msg);
+
+    // Phát âm "eeeeeee" điên
+    scream(0.3 + Math.random()*0.2);
+
+    // Biến mất sau 0.5-2 giây
+    setTimeout(() => {
+      msg.style.opacity = 0;
+      msg.style.transform = 'scale(0.5) rotate(' + (Math.random()*360) + 'deg)';
+      setTimeout(() => msg.remove(), 300);
+    }, 500 + Math.random()*1500);
+
+    // Màn hình rung mạnh
+    const x = (Math.random() - 0.5) * 10;
+    const y = (Math.random() - 0.5) * 10;
+    document.body.style.transform = `translate(${x}px, ${y}px)`;
+    setTimeout(() => { document.body.style.transform = 'translate(0,0)'; }, 50);
+
+  }, 120);
+});
+</script>
+</body>
+</html>
+
